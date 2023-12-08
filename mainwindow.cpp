@@ -3,6 +3,7 @@
 // TODO: 실제모터 구동시 확인 필요
 // 회전수(분당) = 120*60Hz/극수
 // 회전수(초당) = 120*60Hz/극수/60 :
+// git test commit
 
 #include <QtConcurrent/QtConcurrent>
 
