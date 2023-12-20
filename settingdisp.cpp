@@ -18,6 +18,7 @@ SettingDisp::SettingDisp(QWidget *parent)
     QHBoxLayout *hlayout2 = new QHBoxLayout;
     QHBoxLayout *hlayout3 = new QHBoxLayout();
     QHBoxLayout *btnlay = new QHBoxLayout();
+    pPDMinfo = new  PDMInfo;
     titleFont.setPointSize(14);
     titleFont.setBold(true);
     titleLabel->setFont(titleFont);
@@ -97,33 +98,33 @@ SettingDisp::SettingDisp(QWidget *parent)
     this->setTabOrder(op, ratio);
     this->setTabOrder(ratio, btnTrans);
 
-    connect(btnTrans,SIGNAL(clicked()),this,SLOT(btnTransFunc()));
+//    connect(btnTrans,SIGNAL(clicked()),this,SLOT(btnTransFunc()));
 }
 
-
-
+#if 1
+PDMInfo * SettingDisp::getInfo(void){
+    return pPDMinfo;
+}
 void SettingDisp::btnTransFunc()
 {
+    qDebug()<<"-------------->"<<__func__;
     emit selectDeviceSignal(device->text().toInt());
-    PDMInfo pdmInfo;
-    pdmInfo.ip = ipLineEdit->text();
-    pdmInfo.port = portLineEdit->text().toInt();
-    pdmInfo.deviceNum = device->text().toInt();  // Assuming deviceNum is an integer
-    pdmInfo.OP = op->text().toFloat();  // Assuming OP is a float
+
+    (*pPDMinfo).ip = ipLineEdit->text();
+    (*pPDMinfo).port = portLineEdit->text().toInt();
+ //   pdmInfo.deviceNum = device->text().toInt();  // Assuming deviceNum is an integer
+    //pdmInfo = op->text().toFloat();  // Assuming OP is a float
 
     QString comboText = ratio->text();//->currentText();
     QStringList transValues = comboText.split(":");
-    if (transValues.size() == 2) {
-        pdmInfo.trans1 = transValues[0].toInt();
-        pdmInfo.trans2 = transValues[1].toInt();
-    }
+//    if (transValues.size() == 2) {
+//        pdmInfo.trans1 = transValues[0].toInt();
+//        pdmInfo.trans2 = transValues[1].toInt();
+//    }
    // sendData(pdmInfo);
-    ConnectionManager conMng;
-    conMng.sendSettingPacket(pdmInfo);
     close();
 }
-
-
+#endif
 
 
 

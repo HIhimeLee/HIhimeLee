@@ -6,15 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>374</width>
+    <height>352</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="pushButton_1">
     <property name="geometry">
      <rect>
       <x>30</x>
@@ -27,7 +27,10 @@
      <string>Data1</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="pushButton2">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>210</x>
@@ -37,7 +40,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Data2-8</string>
+     <string>STOP</string>
     </property>
    </widget>
    <widget class="QListView" name="listView">
@@ -56,7 +59,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>400</width>
+     <width>374</width>
      <height>21</height>
     </rect>
    </property>

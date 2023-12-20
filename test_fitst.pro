@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui network serialport
+QT       += core gui charts network serialport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -27,12 +27,22 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     connectionmanager.cpp \
-    settingdisp.cpp
+    settingdisp.cpp \
+    filemanager.cpp
 
 HEADERS += \
         mainwindow.h \
     connectionmanager.h \
-    settingdisp.h
+    settingdisp.h \
+    filemanager.h
 
 FORMS += \
         mainwindow.ui
+
+INCLUDEPATH += ./include
+LIBS += -luser32
+#LIBS += -L"./include" -lfftw3-3
+#LIBS += -L"./include" -lfftw3f-3
+#LIBS += -L"./include" -lfftw3l-3
+
+#LIBS += -L/path/to/library/folder -lwlanapi -lole32

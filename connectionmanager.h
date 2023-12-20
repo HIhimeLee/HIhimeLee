@@ -11,20 +11,27 @@ class ConnectionManager :public QObject
 public:
     ConnectionManager(QObject *parent = nullptr);
     ~ConnectionManager();
-    void sendSettingPacket(const PDMInfo& pdmInfo);
+    void sendSettingPacket_t(const PDMInfo& pdmInfo);
+    quint8 timeCountFunc(void);
 signals:
     void dataReady(QList<float>*);
     void sig_dataOccured(QList<qint16>*,QList<float>*);
 
-//private slots:
+public slots:
     void socketReadyRead();
     void packetParsingBegin(char *buf, int size);
     void packetParsingMid(char *buf, int size);
+    void sendSettingPacket1(QList<qint32>* bufflist);
+    void sendSettingPacket2(QList<qint32>* bufflist);
+    void sendSettingPacketAck(PDMInfo& pdmInfo);
+    void sendSettingPacketAck12(PDMInfo& pdmInfo);
+    void sendSettingPacketAck13(PDMInfo& pdmInfo);
 public:
     void start();
     void stop();
 
 private:
+    quint8 timeCounter;
     QUdpSocket *socket;
     QList<float> *freqList=nullptr;
     QList<qint16> *curList=nullptr;
